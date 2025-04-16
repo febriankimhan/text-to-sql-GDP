@@ -1,0 +1,6 @@
+sqlalchemy==2.0.38
+pymysql>=1.0.2
+cryptography>=3.4.7  # Required for PyMySQL
+tqdm==4.67.1
+pandas>=2.0.0  # Required for DataFrame operations
+cryptography==44.0.2

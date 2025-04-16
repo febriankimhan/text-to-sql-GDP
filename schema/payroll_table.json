@@ -1,0 +1,852 @@
+{
+  "employees": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "start_date",
+        "type": "DATE"
+      },
+      {
+        "name": "point_of_hire_id",
+        "description": "The location where the employee is hired. Does not necessarily mean the employee's current work location."
+      },
+      {
+        "name": "manager_id",
+        "description": "The employee's manager's employee ID. If the employee does not have a manager, this field is NULL. A manager is an employee whose emploee ID appears in the manager_id field of another employee's record."
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "join_date",
+        "type": "DATE"
+      },
+      {
+        "name": "active",
+        "description": "Indicates if the employee is currently active.",
+        "type": "BOOLEAN"
+      },
+      {
+        "name": "identification_number",
+        "type": "VARCHAR"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "point_of_hire_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "manager_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "id"
+  },
+  "employee_details": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "place_of_birth_id"
+      },
+      {
+        "name": "blood_type"
+      },
+      {
+        "name": "marital_status"
+      },
+      {
+        "name": "gender"
+      },
+      {
+        "name": "date_of_birth",
+        "type": "DATE"
+      },
+      {
+        "name": "family_card_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "race_id"
+      },
+      {
+        "name": "religion_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "race_id",
+        "ref_table": "races",
+        "ref_column": "id"
+      },
+      {
+        "column": "religion_id",
+        "ref_table": "religions",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "place_of_birth_id",
+        "ref_table": "cities",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_statuses": {
+    "description": "Stores current employment status information for employees.",
+    "columns": [
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "location_id"
+      },
+      {
+        "name": "organization_id"
+      },
+      {
+        "name": "job_title_id"
+      },
+      {
+        "name": "job_level_id"
+      },
+      {
+        "name": "employment_type_id"
+      },
+      {
+        "name": "employment_status_type_id"
+      },
+      {
+        "name": "contract_start",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_end",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_type_id",
+        "ref_table": "employment_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_level_id",
+        "ref_table": "job_levels",
+        "ref_column": "id"
+      },
+      {
+        "column": "location_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "organization_id",
+        "ref_table": "organizations",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_status_type_id",
+        "ref_table": "employment_status_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_title_id",
+        "ref_table": "job_titles",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_status_histories": {
+    "description": "Stores historical employment status information for employees.",
+    "columns": [
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "location_id"
+      },
+      {
+        "name": "organization_id"
+      },
+      {
+        "name": "job_title_id"
+      },
+      {
+        "name": "job_level_id"
+      },
+      {
+        "name": "employment_type_id"
+      },
+      {
+        "name": "employment_status_type_id"
+      },
+      {
+        "name": "effective_date",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_start",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_end",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_type_id",
+        "ref_table": "employment_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_level_id",
+        "ref_table": "job_levels",
+        "ref_column": "id"
+      },
+      {
+        "column": "location_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "organization_id",
+        "ref_table": "organizations",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_status_type_id",
+        "ref_table": "employment_status_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_title_id",
+        "ref_table": "job_titles",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_status_types": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "organizations": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "job_titles": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "job_levels": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "locations": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "employment_types": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "termination_entries": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "effective_date",
+        "type": "DATE"
+      },
+      {
+        "name": "termination_reason_id"
+      },
+      {
+        "name": "approval_status"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "termination_reason_id",
+        "ref_table": "termination_reasons",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "master_data": {
+      "approval_status": [
+        "APPROVED",
+        "REJECTED",
+        "OPEN",
+        "WAITING_FOR_APPROVAL"
+      ]
+    },
+    "data_trustee": "employee_id"
+  },
+  "termination_reasons": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "employee_variable_metadata": {
+    "description": "Stores metadata for custom data fields.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name",
+        "description": "Name of the custom data field."
+      },
+      {
+        "name": "type",
+        "description": "Data type of the custom field."
+      }
+    ]
+  },
+  "employee_variables": {
+    "description": "Stores custom data values for employees.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "employee_variable_metadata_id"
+      },
+      {
+        "name": "value",
+        "description": "Value of the custom data field.",
+        "type": "BLOB"
+      },
+      {
+        "name": "date",
+        "description": "Date associated with the custom data entry.",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_variable_metadata_id",
+        "ref_table": "employee_variable_metadata",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "cities": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "races": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "religions": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "employee_salary_templates": {
+    "description": "Stores information about employee's latest employee salary templates, including employee's latest salary changes.",
+    "columns": [
+      {
+        "name": "id",
+        "description": "Unique identifier for each employee's salary template, corresponding to the employee's ID."
+      },
+      {
+        "name": "effective_date",
+        "description": "Date when the salary template is effective. Also the date when the last employee's salary changes.",
+        "type": "DATE"
+      },
+      {
+        "name": "salary_template_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "salary_template_id",
+        "ref_table": "salary_templates",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "id"
+  },
+  "salary_payments": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "total_thp"
+      },
+      {
+        "name": "payment_date",
+        "type": "DATE"
+      },
+      {
+        "name": "salary_payment_summary_id"
+      },
+      {
+          "name": "process",
+          "description": "Indicates if the salary payment has been processed.",
+          "type": "BOOLEAN"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "salary_payment_summary_id",
+        "ref_table": "salary_payment_summaries",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "salary_payment_summaries": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "transferred_amount",
+        "description": "Total amount transferred to the employees. Does not equal to the company's total expenses. Use salary_calculations for total expenses."
+      },
+      {
+        "name": "payment_date",
+        "type": "DATE"
+      },
+      {
+        "name": "company_bank_account_id"
+      },
+      {
+        "name": "number_of_transferred_employees"
+      },
+      {
+        "name": "number_of_processed_employees"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "company_bank_account_id",
+        "ref_table": "company_bank_accounts",
+        "ref_column": "id"
+      }
+    ]
+  },
+  "company_bank_accounts": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "bank_branch_id"
+      },
+      {
+        "name": "name"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "bank_branch_id",
+        "ref_table": "bank_branches",
+        "ref_column": "id"
+      }
+    ]
+  },
+  "bank_branches": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "bank_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "bank_id",
+        "ref_table": "banks",
+        "ref_column": "id"
+      }
+    ]
+  },
+  "banks": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "additional_income_groups": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "code"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "type"
+      }
+    ],
+    "master_data": {
+      "type": [
+        "BONUS_PAY",
+        "COMPENSATION_PAY",
+        "OTHER_INCOME_PAY"
+      ]
+    }
+  },
+  "additional_income_process_employees": {
+    "description": "Stores information about additional income processes including employee's bonus.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "additional_income_process_id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "total"
+      },
+      {
+        "name": "total_after_pph"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "additional_income_process_id",
+        "ref_table": "additional_income_processes",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "additional_income_processes": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "additional_income_group_id"
+      },
+      {
+        "name": "additional_income_date",
+        "type": "DATE"
+      },
+      {
+        "name": "payment_date",
+        "type": "DATE"
+      },
+      {
+        "name": "type"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "additional_income_group_id",
+        "ref_table": "additional_income_groups",
+        "ref_column": "id"
+      }
+    ],
+    "master_data": {
+      "type": [
+        "BONUS_PAY",
+        "COMPENSATION_PAY",
+        "OTHER_INCOME_PAY"
+      ]
+    }
+  },
+  "salary_calculations": {
+    "description": "Stores information about salary calculations for employees. Stores all expenses for each employee (all THP and non-THP salary item values).",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_workday"
+      },
+      {
+        "name": "normal_workday"
+      },
+      {
+        "name": "employee_salary_template_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_salary_template_id",
+        "ref_table": "employee_salary_templates",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_salary_templates.id"
+  },
+  "salary_calculation_details": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "salary_calculation_id"
+      },
+      {
+        "name": "amount"
+      },
+      {
+        "name": "salary_template_detail_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "salary_calculation_id",
+        "ref_table": "salary_calculations",
+        "ref_column": "id"
+      },
+      {
+        "column": "salary_template_detail_id",
+        "ref_table": "salary_template_details",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "salary_calculations.employee_salary_templates.id"
+  },
+  "salary_template_details": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "salary_item_id"
+      },
+      {
+        "name": "thp",
+        "description": "Indicates if the item is a take home pay(THP) or non-THP item.",
+        "type": "BOOLEAN"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "salary_item_id",
+        "ref_table": "salary_items",
+        "ref_column": "id"
+      }
+    ]
+  },
+  "salary_items": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "code"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "thp",
+        "description": "Indicates if the item is a take home pay (THP) or non-THP item.",
+        "type": "BOOLEAN"
+      }
+    ]
+  },
+  "monthly_tax_reports": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "employee_id",
+        "type": "string"
+      },
+      {
+        "name": "year",
+        "type": "int"
+      },
+      {
+        "name": "month",
+        "type": "int"
+      },
+      {
+        "name": "organization_id",
+        "type": "string"
+      },
+      {
+        "name": "location_id",
+        "type": "string"
+      },
+      {
+        "name": "job_title_id",
+        "type": "string"
+      },
+      {
+        "name": "job_level_id",
+        "type": "string"
+      },
+      {
+        "name": "total_monthly_gross_income"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "organization_id",
+        "ref_table": "organizations",
+        "ref_column": "id"
+      },
+      {
+        "column": "location_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_title_id",
+        "ref_table": "job_titles",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_level_id",
+        "ref_table": "job_levels",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  }
+}

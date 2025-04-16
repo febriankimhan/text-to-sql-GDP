@@ -1,0 +1,685 @@
+{
+  "employees": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "start_date",
+        "type": "DATE"
+      },
+      {
+        "name": "point_of_hire_id",
+        "description": "The location where the employee is hired. Does not necessarily mean the employee's current work location."
+      },
+      {
+        "name": "manager_id",
+        "description": "The employee's manager's employee ID. If the employee does not have a manager, this field is NULL. A manager is an employee whose emploee ID appears in the manager_id field of another employee's record."
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "join_date",
+        "type": "DATE"
+      },
+      {
+        "name": "active",
+        "description": "Indicates if the employee is currently active.",
+        "type": "BOOLEAN"
+      },
+      {
+        "name": "identification_number",
+        "type": "VARCHAR"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "point_of_hire_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "manager_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "id"
+  },
+  "employee_details": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "place_of_birth_id"
+      },
+      {
+        "name": "blood_type"
+      },
+      {
+        "name": "marital_status"
+      },
+      {
+        "name": "gender"
+      },
+      {
+        "name": "date_of_birth",
+        "type": "DATE"
+      },
+      {
+        "name": "family_card_number",
+        "type": "VARCHAR"
+      },
+      {
+        "name": "race_id"
+      },
+      {
+        "name": "religion_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "race_id",
+        "ref_table": "races",
+        "ref_column": "id"
+      },
+      {
+        "column": "religion_id",
+        "ref_table": "religions",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "place_of_birth_id",
+        "ref_table": "cities",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_statuses": {
+    "description": "Stores current employment status information for employees.",
+    "columns": [
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "location_id"
+      },
+      {
+        "name": "organization_id"
+      },
+      {
+        "name": "job_title_id"
+      },
+      {
+        "name": "job_level_id"
+      },
+      {
+        "name": "employment_type_id"
+      },
+      {
+        "name": "employment_status_type_id"
+      },
+      {
+        "name": "contract_start",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_end",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_type_id",
+        "ref_table": "employment_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_level_id",
+        "ref_table": "job_levels",
+        "ref_column": "id"
+      },
+      {
+        "column": "location_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "organization_id",
+        "ref_table": "organizations",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_status_type_id",
+        "ref_table": "employment_status_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_title_id",
+        "ref_table": "job_titles",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_status_histories": {
+    "description": "Stores historical employment status information for employees.",
+    "columns": [
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "location_id"
+      },
+      {
+        "name": "organization_id"
+      },
+      {
+        "name": "job_title_id"
+      },
+      {
+        "name": "job_level_id"
+      },
+      {
+        "name": "employment_type_id"
+      },
+      {
+        "name": "employment_status_type_id"
+      },
+      {
+        "name": "effective_date",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_start",
+        "type": "DATE"
+      },
+      {
+        "name": "contract_end",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_type_id",
+        "ref_table": "employment_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_level_id",
+        "ref_table": "job_levels",
+        "ref_column": "id"
+      },
+      {
+        "column": "location_id",
+        "ref_table": "locations",
+        "ref_column": "id"
+      },
+      {
+        "column": "organization_id",
+        "ref_table": "organizations",
+        "ref_column": "id"
+      },
+      {
+        "column": "employment_status_type_id",
+        "ref_table": "employment_status_types",
+        "ref_column": "id"
+      },
+      {
+        "column": "job_title_id",
+        "ref_table": "job_titles",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employment_status_types": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "organizations": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "job_titles": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "job_levels": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "locations": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "employment_types": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "termination_entries": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "effective_date",
+        "type": "DATE"
+      },
+      {
+        "name": "termination_reason_id"
+      },
+      {
+        "name": "approval_status"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "termination_reason_id",
+        "ref_table": "termination_reasons",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "master_data": {
+      "approval_status": [
+        "APPROVED",
+        "REJECTED",
+        "OPEN",
+        "WAITING_FOR_APPROVAL"
+      ]
+    },
+    "data_trustee": "employee_id"
+  },
+  "termination_reasons": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "employee_variable_metadata": {
+    "description": "Stores metadata for custom data fields.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name",
+        "description": "Name of the custom data field."
+      },
+      {
+        "name": "type",
+        "description": "Data type of the custom field."
+      }
+    ]
+  },
+  "employee_variables": {
+    "description": "Stores custom data values for employees.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "employee_variable_metadata_id"
+      },
+      {
+        "name": "value",
+        "description": "Value of the custom data field.",
+        "type": "BLOB"
+      },
+      {
+        "name": "date",
+        "description": "Date associated with the custom data entry.",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_variable_metadata_id",
+        "ref_table": "employee_variable_metadata",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "cities": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "contact_information": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "email"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "id"
+  },
+  "educations": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "education_major_id"
+      },
+      {
+        "name": "education_level_id"
+      },
+      {
+        "name": "institution_input",
+        "description": "Use LIKE for more flexible matching of institution names or partial values."
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "education_major_id",
+        "ref_table": "education_majors",
+        "ref_column": "id"
+      },
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "education_level_id",
+        "ref_table": "education_levels",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "education_majors": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "education_levels": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "job_experiences": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "job_title"
+      },
+      {
+        "name": "job_level"
+      },
+      {
+        "name": "start_date",
+        "type": "DATE"
+      },
+      {
+        "name": "end_date",
+        "type": "DATE"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "families": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "gender"
+      },
+      {
+        "name": "family_relation_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "family_relation_id",
+        "ref_table": "family_relations",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "family_relations": {
+    "description": "Stores types of family relations.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name",
+        "description": "Name of the family relation type."
+      },
+      {
+        "name": "relation_type",
+        "description": "Category of the family relation."
+      }
+    ]
+  },
+  "races": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "religions": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      }
+    ]
+  },
+  "bank_accounts": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "account_number",
+        "type": "VARCHAR"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "employee_identity_cards": {
+    "description": "Stores information about employee's identity cards (KTP) number. Unrelated with employee's identification_number in employees table.",
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "employee_id"
+      },
+      {
+        "name": "identity_card_number",
+        "description": "Value of the identity card number",
+        "type": "BLOB"
+      },
+      {
+        "name": "identity_card_id"
+      }
+    ],
+    "foreign_keys": [
+      {
+        "column": "employee_id",
+        "ref_table": "employees",
+        "ref_column": "id"
+      },
+      {
+        "column": "identity_card_id",
+        "ref_table": "identity_cards",
+        "ref_column": "id"
+      }
+    ],
+    "data_trustee": "employee_id"
+  },
+  "identity_cards": {
+    "columns": [
+      {
+        "name": "id"
+      },
+      {
+        "name": "name"
+      },
+      {
+        "name": "identity_card_type"
+      }
+    ],
+    "master_data": {
+      "identity_card_type": [
+        "KTP",
+        "PASSPORT",
+        "OTHER"
+      ]
+    }
+  }
+}
